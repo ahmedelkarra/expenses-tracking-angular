@@ -1,0 +1,43 @@
+<div class="relative h-[40dvh] md:h-[25dvh] mb-3 md:mb-0">
+    <div class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 h-[70%] md:h-[60%]">
+        @if (clientName) {
+        <h2 class="text-center text-white text-[20px]">
+            Welcome {{clientName}}
+        </h2>
+        }
+        <div
+            class="absolute top-[70%] md:top-[60%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-40 flex flex-col gap-2 w-[90%] md:w-[50%] p-3 bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 border rounded-md">
+            <div class="flex items-center gap-2">
+                <h2 class="text-[20px] border w-[100%] md:w-[50%] p-1 text-white mx-auto rounded-md text-center">Total:
+                    &euro; {{totalPrice.toFixed(2)}}
+                </h2>
+                @if(isUser){
+                <app-add-expense />
+                }
+            </div>
+            <div class="grid grid-cols-12 gap-2">
+                <div class="col-span-12 md:col-span-6">
+                    <h2 class="flex items-center justify-center gap-5 text-[20px] border p-1 text-white rounded-md">
+                        Debit: &euro; {{totalDebit.toFixed(2)}}
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                            class="w-[25px] h-[25px] border rounded-full p-1 border-green-400">
+                            <path fill="#4ade80"
+                                d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z" />
+                        </svg>
+                    </h2>
+                </div>
+                <div class="col-span-12 md:col-span-6">
+                    <h2 class="flex items-center justify-center gap-5 text-[20px] border p-1 text-white rounded-md">
+                        Credit: &euro;
+                        @if(totalCredit !== 0){-} {{totalCredit.toFixed(2)}}
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                            class="w-[25px] h-[25px] border rounded-full p-1 border-red-400">
+                            <path fill="#f87171"
+                                d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
+                        </svg>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

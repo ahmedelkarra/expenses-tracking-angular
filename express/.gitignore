@@ -1,0 +1,50 @@
+# Node modules
+node_modules/
+npm-debug.log
+
+# Logs
+logs/
+*.log
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+
+# Dependency directories
+jspm_packages/
+
+# Build outputs
+dist/
+build/
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by testing tools
+coverage/
+
+# IDE specific files
+.vscode/
+.idea/
+.DS_Store
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Operating system files
+Thumbs.db
+.DS_Store
+
+# Temporary files
+*.tmp
+*.swp
+
+# Sentry debug files
+.sentryclirc

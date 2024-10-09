@@ -1,0 +1,135 @@
+<header class="bg-white">
+  <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+      <div class="flex-1 md:flex md:items-center md:gap-12">
+        <a class="block text-teal-600" routerLink="/">
+          <span class="sr-only">Home</span>
+          <img src="icon.png" alt="icon" class="w-10 h-10" draggable="false">
+        </a>
+      </div>
+      <div class="md:flex md:items-center md:gap-12">
+        <nav aria-label="Global" class="hidden md:block">
+          <ul class="flex items-center gap-6 text-sm">
+            <li>
+              <a class="text-gray-500 transition hover:text-gray-500/75" routerLink="/"> Home </a>
+            </li>
+
+            @if (!isUser) {
+            <li>
+              <a class="text-gray-500 transition hover:text-gray-500/75" routerLink="/login"> Login </a>
+            </li>
+            <li>
+              <a class="text-gray-500 transition hover:text-gray-500/75" routerLink="/register"> Register </a>
+            </li>
+            }
+
+          </ul>
+        </nav>
+
+        @if (isUser) {
+        <div class="hidden md:relative md:block">
+          <button type="button" class="overflow-hidden rounded-full border border-gray-300 shadow-inner"
+            (click)="showMenuFunction()">
+            <span class="sr-only">Toggle dashboard menu</span>
+
+            <h2 class="flex justify-center items-center bg-slate-400 text-white size-10 object-cover">{{nameInfo}}</h2>
+          </button>
+
+          @if (showMenu) {
+          <div
+            class="absolute end-0 z-10 mt-0.5 w-56 divide-y divide-gray-100 rounded-md border border-gray-100 bg-white shadow-lg"
+            role="menu">
+            <div class="p-2">
+              <a routerLink="/profile" (click)="showMenuFunction()"
+                class="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                role="menuitem">
+                My profile
+              </a>
+            </div>
+
+            <div class="p-2">
+
+              <button (click)="handleLogout()"
+                class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50"
+                role="menuitem">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="size-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+                </svg>
+
+                Logout
+              </button>
+            </div>
+          </div>
+          }
+
+        </div>
+        }
+
+        <div class="relative md:hidden z-50">
+          <div class="inline-flex items-center overflow-hidden rounded-md border bg-white">
+
+            <button (click)="showMenuSmallFunction()"
+              class="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75">
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-5" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+          @if(showMenuSmall){
+
+          <div
+            class="absolute end-0 z-10 mt-2 w-56 divide-y divide-gray-100 rounded-md border border-gray-100 bg-white shadow-lg"
+            role="menu">
+            <div class="p-2">
+
+              <a (click)="showMenuSmallFunction()" routerLink="/"
+                class="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                role="menuitem">
+                Home
+              </a>
+              @if (!isUser) {
+              <a (click)="showMenuSmallFunction()" routerLink="/login"
+                class="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                role="menuitem">
+                Login
+              </a>
+
+              <a (click)="showMenuSmallFunction()" routerLink="/register"
+                class="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                role="menuitem">
+                Register
+              </a>
+              }
+              @if (isUser){
+              <a (click)="showMenuSmallFunction()" routerLink="/profile"
+                class="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                role="menuitem">
+                Profile
+              </a>
+              }
+
+            </div>
+
+            <div class="p-2">
+
+              <button type="button" (click)="handleLogout()"
+                class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50"
+                role="menuitem">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-4 text-red-200">
+                  <path fill="#b91c1c"
+                    d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z" />
+                </svg>
+
+                Logout
+              </button>
+            </div>
+          </div>
+          }
+        </div>
+
+      </div>
+    </div>
+  </div>
+</header>
