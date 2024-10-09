@@ -31,6 +31,6 @@ Expense Tracker is an application designed to help you track your expenses and i
 *npm run dev*
 
 **For the client (Frontend)**
-## cd angular
-## npm install
-## npm start
+**cd angular**
+**npm install**
+**npm start**
