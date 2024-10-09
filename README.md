@@ -26,9 +26,9 @@ Expense Tracker is an application designed to help you track your expenses and i
 ## Installation
 
 **For the server (Backend)**
-*cd express*
-*npm install*
-*npm run dev*
+**cd express**
+**npm install**
+**npm run dev**
 
 **For the client (Frontend)**
 **cd angular**
